@@ -43,7 +43,7 @@
 
     [else
       (define first-pass (decode-elements elements
-                                          #:txexpr-elements-proc decode-paragraphs
+                                          ;#:txexpr-elements-proc decode-paragraphs
                                           #:exclude-tags '(script style figure)))
       (make-txexpr 'body null
                    (decode-elements first-pass
@@ -437,3 +437,79 @@ Index functionality: allows creation of a book-style keyword index.
 |#
 (define (pubdate->english datetime)
   (date->string (datestring->date datetime)))
+
+; esoteric glyphs
+(define (esoteric-glyph which)
+  (let ([font-character
+          (case which
+            #| PR Astro
+            ['sun "|"]
+            ['moon "a"]
+            ['mercury "1"]
+            ['venus "2"]
+            ['mars "4"]
+            ['jupiter "5"]
+            ['saturn "6"]
+            |#
+            ['sun "A"]
+            ['moon "B"]
+            ['mercury "C"]
+            ['venus "D"]
+            ['mars "E"]
+            ['jupiter "F"]
+            ['saturn "G"]
+            [else
+              (log-warning "Esoteric glyph not found: ~V" which)
+              "."])])
+    (case (current-poly-target)
+      [(ltx pdf) `(txt "\\textcolor{gray}{Esoteric glyphs not implemented yet.}")]
+      [else `(span [[class ,(format "esoteric-glyph ~A" which)]] ,font-character)])))
+
+(define mercury (esoteric-glyph 'mercury))
+
+(define venus (esoteric-glyph 'venus))
+
+
+(define-tag-function (hourstable attrs contents)
+  (case (current-poly-target)
+        ((ltx pdf) `(txt "\\textcolor{gray}{Hours table not implemented yet.}"))
+        (else `(table [[class "hours"]]
+                 (thead
+                   (tr [[class "day"]]
+                     (th [[colspan "7"] [class "day"]]
+                       ,(format "Day of ~A" (string-titlecase (symbol->string (select 'day-ruler (current-metas)))))))
+                   (tr [[class "columns"]]
+                     (th [[class "hour-signature col-header"] [colspan "3"]] "Hour")
+                     (th [[class "spacing col-header"]])
+                     (th [[class "trad col-header"]] "Traditional meaning")
+                     (th [[class "magical col-header"]] "Magical modern meaning")
+                     (th [[class "mundane col-header"]] "Mundane modern meaning")))
+                 (tbody
+                   ,@contents)))))
+
+(define-tag-function (hour attrs contents)
+  (let ((n (format "~A" (cadr (assq 'n attrs))))
+        (ruler (esoteric-glyph (cadr (assq 'ruler attrs)))))
+    (case (current-poly-target)
+          [(ltx pdf) `(txt "\\textcolor{gray}{Hours table not implemented yet.}")]
+          [else `(tr
+                   (td [[class "day-ruler"]] ,(esoteric-glyph (select 'day-ruler (current-metas))))
+                   (td [[class "hour-number"]] ,n)
+                   (td [[class "hour-ruler"]] ,ruler)
+                   (td [[class "spacing"]])
+                   ,@contents)])))
+
+(define (hours-col-with-class class contents)
+  (case (current-poly-target)
+    [(ltx pdf) `(txt "\\textcolor{gray}{Hours table col not implemented yet.}")]
+    [else `(td [[class ,class]] ,contents)]))
+
+(define (trad contents) (hours-col-with-class "trad" contents))
+(define (modern-magical contents) (hours-col-with-class "magical" contents))
+(define (modern-mundane contents) (hours-col-with-class "mundane" contents))
+
+(define (prayer . contents)
+  (case (current-poly-target)
+    [(ltx pdf) `(txt "\\textcolor{gray}{Prayer not implemented yet.}")]
+    [else `(div [[class "prayer"]] (p ,@contents))]))
+

@@ -26,9 +26,9 @@ div.poem {
 
 /* *** */
 pre.verse {
-  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-	margin: 1.5em auto;
-	width: auto;
+    font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    margin: 1.5em auto;
+    width: auto;
     display:table;
     white-space: pre-wrap;
     /* Whitespace is preserved by the browser.
@@ -136,3 +136,107 @@ footer p { width: 100%; font-size: 1.125rem; }
 
 @media (max-width: 760px) {
     div.poem { max-width: 90%; } }
+
+/* added by BlueMagician */
+body {
+  color:#111111 !important;
+  background-color:#fffff8 !important;
+}
+
+@font-face {
+  font-family: "PR Astro";
+  src: url(/css/fonts/pr_astro/ASTRO.TTF) format("truetype")
+}
+
+@font-face {
+  font-family: "AstroDotBasic";
+  src: url(/css/fonts/astrodotbasic/AstroDotBasic.ttf) format("truetype")
+}
+
+span.esoteric-glyph {
+  font-family: "AstroDotBasic";
+  font-size:1.5em;
+}
+
+span.esoteric-glyph.mars,
+span.esoteric-glyph.moon
+{
+  display:inline-block;
+}
+
+span.esoteric-glyph.mars {
+  margin-top:-2px;
+}
+
+span.esoteric-glyph.moon
+{
+  margin-top:-1px;
+}
+
+div.prayer {
+  font-style:italic;
+}
+
+.day-ruler, .hour-number, .hour-ruler {
+  text-align:center;
+  padding-top:5px !important;
+}
+
+tr > th.spacing, tr > td.spacing {
+  width:3px;
+  margin:0;
+  padding:0;
+}
+
+tr > td.spacing {
+  background-color:#f6f5ea;
+}
+
+.trad, .magical, .mundane {
+  text-align:left;
+}
+
+.trad {
+}
+
+table {
+  border-collapse:collapse;
+  width:960px;
+  max-width:100%;
+}
+
+th.col-header {
+  background-color:#f8f8ed;
+  padding:5px 5px;
+  vertical-align:middle;
+  font-size:1.1em;
+}
+
+th.day {
+  font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
+  font-size:1.3em;
+  border-bottom:1px solid gray;
+  background-color:#f9f4df;
+  text-align:left;
+  vertical-align:middle;
+  padding:18px;
+}
+
+th.day-ruler, th.hour-number, th.hour-ruler {
+  width:30px;
+}
+
+td {
+  background-color:#fffff4;
+  vertical-align:top;
+  padding:15px;
+  border-top:1px solid gray;
+  line-height:1.4;
+}
+
+td.hour-number {
+  font-size:1.1em;
+  padding-top:8px !important;
+  font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
+}
+

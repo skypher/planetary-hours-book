@@ -12,3 +12,11 @@ The Pollen source code for this site is available ◊hyperlink["https://github.c
 On most pages (including this one!) you can click the PDF link to see the ◊Latex[]-generated print version of that page, as well as a link to see the Pollen source code for that page. Again, the point of interest here isn’t that each page has a corresponding PDF, but that the same text files generate both the website and the PDF files, using a custom, light-weight markup that can take full advantage of both HTML and ◊Latex[].
 
 I'm ◊hyperlink["http://twitter.com/joeld"]{◊code{@joeld}} on Twitter and ◊hyperlink["https://keybase.io/joeld"]{verified on Keybase}. You can also find me at my ◊hyperlink["http://tilde.club/~joeld"]{tilde.club page}, and my main site, ◊hyperlink["http://thelocalyarn.com/blog"]{◊i{The Local Yarn}}, neither of which (yet) use Pollen.
+
+Credits
+
+Icons
+
+horizon by Yarden Gilboa from the Noun Project
+Number by Alex Fuller from the Noun Project
+hourglass by emma mitchell from the Noun Project
